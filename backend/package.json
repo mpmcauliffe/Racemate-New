@@ -1,0 +1,20 @@
+{
+  "devDependencies": {
+    "concurrently": "^8.2.0",
+    "nodemon": "^3.0.1"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.2",
+    "config": "^3.3.9",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "express-graphql": "^0.12.0",
+    "express-validator": "^7.0.1",
+    "graphql": "^16.7.1",
+    "graphql-playground-middleware-express": "^1.7.23",
+    "jsonwebtoken": "^9.0.1",
+    "mongoose": "^7.4.1",
+    "require-graphql-file": "^1.0.1"
+  }
+}
