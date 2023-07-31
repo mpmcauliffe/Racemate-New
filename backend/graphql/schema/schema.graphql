@@ -1,0 +1,221 @@
+
+type Query {
+    users(query: String, first: Int, skip: Int, after: String): [User!]!
+    exercises(query: String, first: Int, skip: Int, after: String): [Exercise!]!
+    myExercises(query: String, first: Int, skip: Int, after: String): [Exercise!]!
+    workouts(query: String, first: Int, skip: Int, after: String): [Workout!]!
+    me: User!
+}
+
+type Mutation {
+    ### USER
+    createUser(data: CreateUserInput!): AuthPayload!
+    login(data: LoginUserInput!): AuthPayload!
+    deleteUser: User!
+    updateUser(data: UpdateUserInput!): UpdatePayload!
+    updateUserPassword(data: UpdateUserPasswordInput!): UpdatePasswordPayload!
+
+    ### EXERCISE
+    createExercise(data: CreateExerciseInput): Exercise!
+    editExercise(data: UpdateExerciseInput): Exercise!
+    deleteExercise(id: ID!): Exercise!
+
+    ### SET
+    createSet(data: CreateSetInput): Set!
+
+    ### WORKOUT
+    createWorkout(data: CreateWorkoutInput): Workout!
+    updateWorkout(data: UpdateWorkoutInput): Workout!
+    deleteWorkout(id: ID!): Workout!
+}
+
+
+#####################################################################
+### USER & AUTHENTICATION
+#####################################################################
+
+type AuthPayload {
+    token: String
+    error: String
+    #user: User!
+}
+type UpdatePayload {
+    user: User,
+    message: String
+}
+type UpdatePasswordPayload {
+    message: String
+}
+
+input CreateUserInput {
+    name: String!
+    email: String!
+    password: String!
+}
+input LoginUserInput {
+    email: String!
+    password: String!
+}
+input UpdateUserInput {
+    name: String
+    email: String
+}
+input UpdateUserPasswordInput {
+    currentPassword: String!
+    newPassword: String!
+}
+
+type User {
+    _id: ID!
+    name: String!
+    email: String!
+    password: String
+    exercises: [Exercise!]
+    workouts: [Workout!]
+}
+
+
+#####################################################################
+### EXERCISES
+#####################################################################
+
+type Exercise {
+    id: ID!
+    title: String!
+    exerciseType: String!
+    typeSelection: String
+    description: String
+    sets: [Set]!
+    notes: String
+    owner: User!
+}
+input CreateExerciseInput {
+    title: String!
+    exerciseType: String!
+    #typeSelection: String!
+    description: String
+    sets: CreateSetInput
+    notes: String
+}
+input UpdateExerciseInput {
+    title: String
+    exerciseType: String
+    typeSelection: String
+    description: String
+    id: String
+    notes: String
+}
+
+
+#####################################################################
+### SET
+#####################################################################
+
+# type Set {
+#     date: String!
+#     reps: [Int]
+#     weight: [Int]
+#     distance: Float
+#     time: Float
+# }
+
+type Set {
+    #_id: ID!
+    date: String
+    isWeighted: Boolean
+    usesDistance: Boolean
+    distanceUnit: String
+    setUnit: String
+    timeDisUnit: String
+    exerciseId: String
+}
+
+input CreateSetInput {
+    exerciseId: String
+    date: String
+    isWeighted: Boolean
+    usesDistance: Boolean
+    distanceUnit: String
+    setUnit: String
+    timeDisUnit: String
+}
+
+# union Sets = Set | null
+
+# union Owner = Artist | Venue
+# input CreateUserInput {
+#     name: String!
+#     email: String!
+#     password: String!
+# }
+
+# type Set {
+#     isWeighted: Boolean!
+#     softUnit: [String!]
+#     heaveyUnit: [WeightedUnit!]
+# }
+# type WeightedUnit {
+#     unit: [String!]
+# }
+
+# type TimeDistance {
+#     usesDistance: Boolean!
+#     distanceUnit: DistanceType!
+#     timeDistanceRecord: [TimeDistanceUnit!]
+    
+# }
+# type TimeDistanceUnit {
+#     time: String
+#     distance: String
+# }
+# enum DistanceType {
+#     MILES
+#     KILOMETERS
+#     LAPS
+# }
+
+# input ExerciseUnit {
+#     date: String!
+#     set: Set
+#     timeDistance: TimeDistance
+# }
+
+# type ExerciseUnit {
+#     id: ID!
+#     date: String!
+#     set: Set
+#     timeDistance: TimeDistance
+#     exercise: Exercise
+# }
+
+
+
+
+
+
+#####################################################################
+### WORKOUTS
+#####################################################################
+
+type Workout {
+    id: ID! 
+    title: String!
+    exercises: [Exercise!]!
+    owner: User! 
+}
+input CreateWorkoutInput {
+    title: String!
+    exercises: String!
+    # owner: User! 
+}
+input UpdateWorkoutInput {
+    title: String
+    # exercises: [Exercise!]
+    # owner: User 
+}
+
+enum MutationType {
+    CREATED
+    UPDATED
+    DELETED
+}
