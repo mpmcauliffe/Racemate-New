@@ -1,6 +1,6 @@
 const express               = require('express')
 const path                  = require('path')
-const graphqlHttp           = require('express-graphql')
+const { graphqlHTTP }       = require('express-graphql')
 const cors                  = require('cors')
 const expressPlayground     = require('graphql-playground-middleware-express').default
 
@@ -21,7 +21,7 @@ app.use(express.json({ extended: false }))
 
 app.use(
     '/graphql',
-    graphqlHttp({
+    graphqlHTTP({
         schema: typeDefs,
         rootValue: resolvers,
         graphiql: true,
