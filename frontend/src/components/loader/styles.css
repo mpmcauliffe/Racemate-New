@@ -1,0 +1,61 @@
+
+
+/* See https://loading.io/css/ */
+
+
+.lds-facebook {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+.lds-facebook div {
+    display: inline-block;
+    position: absolute;
+    left: 8px;
+    width: 16px;
+    background: #7A8A9E;
+    animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+}
+.lds-facebook div:nth-child(1) {
+    left: 8px;
+    animation-delay: -0.24s;
+}
+.lds-facebook div:nth-child(2) {
+    left: 32px;
+    animation-delay: -0.12s;
+}
+.lds-facebook div:nth-child(3) {
+    left: 56px;
+    animation-delay: 0;
+}
+@keyframes lds-facebook {
+    0% {
+        top: 8px;
+        height: 64px;
+    }
+    50%, 100% {
+        top: 24px;
+        height: 32px;
+    }
+}
+
+/* THE FOLLOWING IS NOT INCLUDED ON CSS SPINNER SITE */
+.spinner-container {
+    width: 5vw; 
+    min-height: 50vh; 
+    margin: 40vh auto;
+    padding-bottom: 15vh;
+}
+
+@media (max-width: 769px) {
+    .spinner-container {
+        margin: 40vh 45vw; 
+    }
+}
+
+@media (max-width: 481px) {
+    .spinner-container {
+        margin: 40vh 42vw; 
+    }
+}
