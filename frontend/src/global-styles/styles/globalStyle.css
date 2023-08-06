@@ -1,0 +1,116 @@
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+button {
+    cursor: pointer;
+}
+button:disabled {
+    cursor: default;
+}
+h1, h2, h3, h4, h5 {
+    font-family: "proxima-nova-condensed";
+}
+h1 {
+    font-size: 5rem;
+    font-weight: 700;
+}
+h2 {
+    font-size: 3.1rem;
+    font-weight: 400;
+}
+h3 {
+    font-size: 2.7rem;
+    font-weight: 400;
+    /* font-style: italic; */
+}
+h4 {
+    font-size: 2.4rem;
+}
+h5 {
+    font-size: 2rem;
+    font-weight: 300;
+}
+h6 {
+    font-family: "ocr-a-std";
+}
+p {
+    font-size: 1.9rem;
+    font-weight: 300;
+    line-height: 150%;
+}
+
+a {
+    text-decoration: none;
+    color: #7A8A9E;
+}
+
+label, 
+input,
+select, 
+textarea,
+p {
+    font-family: "proxima-nova";
+    font-weight: 100;
+}
+label {
+    align-self: flex-start;
+    margin-left: 5%;
+    font-size: 1.9rem;
+}
+input,
+select,
+textarea {
+    height: 3.5rem;
+    width: 80%;
+    margin: 1rem 0 4rem 0;
+    padding: .5rem;
+    border-radius: .5rem;
+    background: #D7D7D7;
+    border: 1px solid #b9a9a9;
+    font-size: 2.7rem;
+    transition: 500ms;
+}
+textarea {
+    height: 7rem;
+} 
+input:focus, 
+textarea:focus, 
+select:focus, 
+button:focus,
+select:focus {
+    border: .2rem solid #ffb900;
+    outline: none;
+}
+
+button {
+    height: 5rem;
+    width: 83%;
+    border: none;
+    font-family: "proxima-nova-condensed";
+    font-size: 2.7rem;
+    font-weight: 400;
+}
+
+.ReactModal__Overlay {
+    opacity: 0;
+    transition: opacity 500ms ease-in-out;
+}
+
+.ReactModal__Overlay--after-open{
+    opacity: 1;
+}
+
+.ReactModal__Overlay--before-close{
+    opacity: 0;
+    transition: opacity 500ms ease-in-out;
+}
+
+.simplebar-track.simplebar-vertical .simplebar-scrollbar:before {
+    background-image: linear-gradient( #7A8A9E , #0E1C2E);
+}
